@@ -103,3 +103,14 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
+## pictures of the app :
+
+![image](https://github.com/Abdellah-belcaid/Angular-Firestore-CRUD/assets/85366841/7dcde44f-7e11-4070-a61a-09b795081c90) 
+
+![image](https://github.com/Abdellah-belcaid/Angular-Firestore-CRUD/assets/85366841/1c6cd7dd-6711-4d86-a48c-60086000ae60)
+
+
+
+
+
+
