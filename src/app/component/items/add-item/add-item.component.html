@@ -1,0 +1,25 @@
+<div class="card">
+    <div class="card-content">
+        <span class="card-title">Add New Item</span>
+        <form (ngSubmit)="addItem()" class="col s6" #itemForm="ngForm">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input type="text" name="title" placeholder="Add title" id="title" [(ngModel)]="newItem.title"
+                        required minlength="3" #titleInput="ngModel">
+                    <label for="title">Title</label>
+                    <div *ngIf="titleInput.invalid && (titleInput.dirty || titleInput.touched)"
+                        class="error-text red-text">
+                        Title is required and must be at least 3 characters.</div>
+                </div>
+                <div class="input-field col s6">
+                    <input type="text" name="description" placeholder="Add description" id="description"
+                        [(ngModel)]="newItem.description" required minlength="10" #descriptionInput="ngModel">
+                    <label for="description">Description</label>
+                    <div *ngIf="descriptionInput.invalid && (descriptionInput.dirty || descriptionInput.touched)"
+                        class="error-text red-text">Description is required and must be at least 10 characters.</div>
+                </div>
+                <button type="submit" [disabled]="itemForm.invalid" class="btn">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

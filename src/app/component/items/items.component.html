@@ -1,0 +1,43 @@
+<app-add-item></app-add-item>
+
+<div *ngIf="items!.length>0;else noItems">
+    <ul *ngFor="let item of items" class="collection">
+        <li class="collection-item">
+            <strong>{{item.title}} : </strong> {{item.description}}
+            <a href="#" class="secondary-content">
+                <i (click)="editItem($event,item)" class="fa fa-pencil"></i>
+                <i *ngIf="editState && itemToEdit.id===item.id" (click)="editState= false" class="fa fa-compress"></i>
+            </a>
+
+            <div *ngIf="editState && itemToEdit.id===item.id">
+
+                <form (ngSubmit)="updateItem(item)" class="col s6" #itemForm="ngForm">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input type="text" name="title" placeholder="Add title" id="title" [(ngModel)]="item.title"
+                                required minlength="3" #titleInput="ngModel">
+                            <div *ngIf="titleInput.invalid && (titleInput.dirty || titleInput.touched)"
+                                class="error-text red-text">
+                                Title is required and must be at least 3 characters.</div>
+                        </div>
+                        <div class="input-field col s6">
+                            <input type="text" name="description" placeholder="Add description" id="description"
+                                [(ngModel)]="item.description" required minlength="10" #descriptionInput="ngModel">
+                            <div *ngIf="descriptionInput.invalid && (descriptionInput.dirty || descriptionInput.touched)"
+                                class="error-text red-text">Description is required and must be at least 10 characters.
+                            </div>
+                        </div>
+                        <input type="submit" [disabled]="itemForm.invalid" value="Update"
+                            class="btn-small orange col s2">
+                        <a class="btn-small red col s2" (click)="deleteItem($event, item)">Delete</a>
+                    </div>
+                </form>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<ng-template #noItems>
+    <hr>
+    <h5>there are no items to list</h5>
+</ng-template>
